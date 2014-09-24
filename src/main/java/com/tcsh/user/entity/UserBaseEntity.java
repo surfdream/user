@@ -26,10 +26,10 @@ public class UserBaseEntity implements java.io.Serializable {
 	private Timestamp registerTime;
 	private String registerIp;
 	private Timestamp lastLogIntegerime;		//最后一次登录时间 
-	private String lastLoginIp;			//最后一次登录IP
-	private Integer loginCount;			//登录次数
-	private Integer rank;				//用户等级
-	private Short userState;
+	private String lastLoginIp;					//最后一次登录IP
+	private Integer loginCount;					//登录次数
+	private Integer rank;						//用户等级
+	private Short userState;					//用户当前状态
 
 	public UserBaseEntity() {
 	}
