@@ -2,6 +2,7 @@ package com.tcsh.user.service.impl;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.tcsh.common.emial.EmailSender;
@@ -31,7 +32,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Integer errorRemaining(String username) {
-		// TODO Auto-generated method stub
+		if (StringUtils.isBlank(username))
+			return null;
+		UserBaseEntity userBase = getByUsername(username);
+		if(null == userBase)
+			return null;
+		long now = System.currentTimeMillis();
 		return null;
 	}
 
@@ -43,14 +49,19 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean isPasswordValid(Integer id, String password) {
-		// TODO Auto-generated method stub
+		UserBaseEntity userBase = getById(id);
+		
 		return false;
 	}
 
 	@Override
 	public UserBaseEntity getById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.get(UserBaseEntity.class, id);
+	}
+
+	@Override
+	public UserBaseEntity getByUsername(String useremail) {
+		return userDao.getUniqueByKey(UserBaseEntity.class, "userEmail", useremail);
 	}
 
 }

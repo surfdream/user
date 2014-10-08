@@ -67,4 +67,11 @@ public interface UserService {
 	 * @return
 	 */
 	public UserBaseEntity getById(Integer id);
+	
+	/**
+	 * 根据用户的登录名获取用户基本信息
+	 * @param useremail
+	 * @return
+	 */
+	public UserBaseEntity getByUsername(String useremail);
 }
