@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-lazy-init="true">
+	
+	<!--COOKIE登录-->
+	<bean id="rememberMeService" class="com.jeecms.common.security.rememberme.TokenBasedRememberMeServices">
+		<property name="key" value="jeecms"/>
+		<!--<property name="alwaysRemember" value="true"/>-->
+		<property name="userDetailsService" ref="memberMng"/>
+	</bean>
+	
+	<!--HttpSession-->
+	<bean id="sessionProvider" class="com.jeecms.common.web.session.HttpSessionProvider"/>
+	
+	<!--图片处理-->
+	<bean id="imageScale" class="com.jeecms.common.image.ImageScaleImpl" init-method="init">
+		<property name="tryMagick" value="false"/>
+	</bean>
+	
+	<!--密码加密器-->
+	<bean id="pwdEncoder" class="com.jeecms.common.security.encoder.Md5PwdEncoder"/>
+	
+</beans>

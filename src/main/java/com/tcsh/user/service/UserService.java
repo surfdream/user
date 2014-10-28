@@ -2,6 +2,8 @@ package com.tcsh.user.service;
 
 import com.tcsh.common.emial.EmailSender;
 import com.tcsh.common.emial.MessageTemplate;
+import com.tcsh.common.security.UsernameNotFoundException;
+import com.tcsh.core.service.BadCredentialsException;
 import com.tcsh.user.entity.UserBaseEntity;
 
 /**
@@ -24,7 +26,7 @@ public interface UserService {
 	 */
 	public UserBaseEntity passwordForgotten(Integer userId, EmailSender email,
 			MessageTemplate tpl);
-	
+
 	/**
 	 * 重置密码
 	 * 
@@ -32,7 +34,7 @@ public interface UserService {
 	 * @return
 	 */
 	public UserBaseEntity resetPassword(Integer userId);
-	
+
 	/**
 	 * 根据用户登录邮箱获取该用户登录错误次数
 	 * 
@@ -40,16 +42,20 @@ public interface UserService {
 	 * @return
 	 */
 	public Integer errorRemaining(String useremail);
-	
+
 	/**
 	 * 用户登录
+	 * 
 	 * @param useremail
 	 * @param password
 	 * @param ip
 	 * @return
+	 * @throws UsernameNotFoundException
+	 * @throws BadCredentialsException
 	 */
-	public UserBaseEntity login(String useremail, String password, String ip);
-	
+	public UserBaseEntity login(String useremail, String password, String ip)
+			throws UsernameNotFoundException, BadCredentialsException;
+
 	/**
 	 * 密码是否正确
 	 * 
@@ -60,18 +66,21 @@ public interface UserService {
 	 * @return
 	 */
 	public boolean isPasswordValid(Integer id, String password);
-	
+
 	/**
 	 * 根据用户id 获取用户基本信息
+	 * 
 	 * @param id
 	 * @return
 	 */
 	public UserBaseEntity getById(Integer id);
-	
+
 	/**
 	 * 根据用户的登录名获取用户基本信息
+	 * 
 	 * @param useremail
 	 * @return
 	 */
 	public UserBaseEntity getByUsername(String useremail);
+
 }

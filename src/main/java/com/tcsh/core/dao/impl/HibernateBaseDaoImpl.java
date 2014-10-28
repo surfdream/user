@@ -1,4 +1,4 @@
-package com.tcsh.user.dao.impl;
+package com.tcsh.core.dao.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-import com.tcsh.user.dao.BaseDao;
+import com.tcsh.core.dao.BaseDao;
 
 public class HibernateBaseDaoImpl implements BaseDao {
 

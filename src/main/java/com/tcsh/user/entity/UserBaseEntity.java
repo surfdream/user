@@ -28,6 +28,9 @@ public class UserBaseEntity implements java.io.Serializable {
 	private Timestamp lastLogIntegerime;		//最后一次登录时间 
 	private String lastLoginIp;					//最后一次登录IP
 	private Integer loginCount;					//登录次数
+	private Timestamp errorTime;
+	private Integer errorCount;					//登录错误次数
+	private String errorIp;						//登录错误IP
 	private Integer rank;						//用户等级
 	private Short userState;					//用户当前状态
 
@@ -156,6 +159,33 @@ public class UserBaseEntity implements java.io.Serializable {
 
 	public void setLoginCount(Integer loginCount) {
 		this.loginCount = loginCount;
+	}
+
+	@Column(name = "error_time")
+	public Timestamp getErrorTime() {
+		return errorTime;
+	}
+
+	public void setErrorTime(Timestamp errorTime) {
+		this.errorTime = errorTime;
+	}
+
+	@Column(name = "error_count")
+	public Integer getErrorCount() {
+		return errorCount;
+	}
+
+	public void setErrorCount(Integer errorCount) {
+		this.errorCount = errorCount;
+	}
+
+	@Column(name = "error_ip")
+	public String getErrorIp() {
+		return errorIp;
+	}
+
+	public void setErrorIp(String errorIp) {
+		this.errorIp = errorIp;
 	}
 
 	@Column(name = "rank", nullable = false)

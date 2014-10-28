@@ -1,4 +1,4 @@
-package com.tcsh.user.dao;
+package com.tcsh.core.dao;
 
 import java.io.Serializable;
 import java.util.List;
